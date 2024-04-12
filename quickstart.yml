@@ -9,6 +9,8 @@
       tags:
       - node
       - zsh
+      - dotfiles
+      - ssh
   tasks:
     - name: .zsh Tasks
       ansible.builtin.include_tasks:
@@ -16,3 +18,6 @@
     - name: Node Tasks
       ansible.builtin.include_tasks:
         file: ./tasks/node.yml
+    - name: SSH Tasks
+      ansible.builtin.include_tasks:
+        file: ./tasks/ssh.yml
