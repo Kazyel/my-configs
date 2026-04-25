@@ -1,17 +1,15 @@
-# Kazyel Configuration - Ghostty 09/2025
-theme = Kanagawabones
-
 # Editor
 
+theme = noctalia
 font-family = "JetBrains Mono Nerd Font"
 font-size = 10
 cursor-style = "bar"
 
 # Background Confg
 
-background = #191919
+background = 181211
 background-opacity = 0.95
-background-blur = false
+background-blur = true
 
 # Window Config
 
@@ -28,3 +26,13 @@ window-decoration = server
 shell-integration = zsh
 
 
+# Keybinds
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+j=goto_split:bottom
+
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+j=goto_split:bottom

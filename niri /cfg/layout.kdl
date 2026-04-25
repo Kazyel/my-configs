@@ -1,0 +1,33 @@
+    layout {
+        gaps 16 // Gap between windows
+        center-focused-column "never" // Don’t auto-center focused column
+
+		focus-ring {
+        	width 2
+        	active-color "#d8c2be"
+        	inactive-color "#534341"
+    	}	
+
+        background-color "transparent" // <- needed for noctalia-shell to set wallpaper
+
+        preset-column-widths {
+            proportion 0.33333
+            proportion 0.5
+            proportion 0.66667
+        }
+        
+		shadow {
+		    on
+		    softness 6
+		    spread 0
+		    offset x=0 y=2
+		    draw-behind-window false
+		    color "#00000090"
+		    inactive-color "#00000054"
+		}
+		
+		
+
+        struts {}
+}
+    

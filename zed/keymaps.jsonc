@@ -1,0 +1,35 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+	{
+		"bindings": {
+			"ctrl-b": "project_panel::Toggle",
+			"ctrl-m": "agent::Chat",
+			"ctrl-i": "agent::Toggle"
+		},
+		"use_key_equivalents": true
+	},
+	{
+		"context": "Editor && vim_mode == insert",
+		"bindings": {
+			// "j k": "vim::NormalBefore"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"unbind": {
+			"space": "project_panel::Open"
+		}
+	},
+	{
+		"context": "Workspace",
+		"unbind": {
+			"ctrl-?": "agent::ToggleFocus"
+		}
+	}
+]
