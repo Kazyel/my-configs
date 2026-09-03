@@ -122,7 +122,11 @@ alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 export STARSHIP_CONFIG=$HOME/.config/starship.toml
 
 # Fastfetch
-fastfetch --logo-type file --logo "$HOME/.config/fastfetch/ascii.txt"
+if (( COLUMNS < 145 )); then
+    fastfetch --config "$HOME/.config/fastfetch/compact.jsonc"
+else
+    fastfetch
+fi
 eval "$(starship init zsh)"
 
 export PATH=$PATH:$HOME/.spicetify
