@@ -10,26 +10,26 @@
 		"bindings": {
 			"ctrl-b": "project_panel::Toggle",
 			"ctrl-m": "agent::Chat",
-			"ctrl-i": "agent::Toggle"
+			"ctrl-i": "agent::Toggle",
 		},
-		"use_key_equivalents": true
+		"use_key_equivalents": true,
 	},
 	{
 		"context": "Editor && vim_mode == insert",
 		"bindings": {
 			// "j k": "vim::NormalBefore"
-		}
+		},
 	},
 	{
 		"context": "ProjectPanel && not_editing",
 		"unbind": {
-			"space": "project_panel::Open"
-		}
+			"space": "project_panel::Open",
+		},
 	},
 	{
 		"context": "Workspace",
 		"unbind": {
-			"ctrl-?": "agent::ToggleFocus"
-		}
-	}
+			"ctrl-?": "agent::ToggleFocus",
+		},
+	},
 ]

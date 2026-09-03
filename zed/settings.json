@@ -10,10 +10,27 @@
 	/*
 	 * Agents
 	 */
+	"format_on_save": "on",
+ "sticky_scroll": {
+  "enabled": true
+ },
+ "edit_predictions": {
+		"provider": "zed",
+	},
+	"proxy": "",
 	"agent_ui_font_size": 16.0,
 	"agent": {
-		"max_content_width": 850.0,
-		"default_width": 400.0,
+		"dock": "left",
+  "default_profile": "ask",
+		"default_model": {
+			"provider": "anthropic",
+			"model": "claude-sonnet-4-6-latest",
+			"enable_thinking": true,
+			"effort": "medium",
+		},
+		"thinking_display": "always_collapsed",
+		"max_content_width": 650.0,
+		"default_width": 250.0,
 		"favorite_models": [],
 		"model_parameters": [],
 	},
@@ -53,16 +70,24 @@
 		"modal_max_width": "small",
 	},
 	"show_whitespaces": "selection",
+	"soft_wrap": "editor_width",
 
 	/*
 	 * Layout, Buttons, Tabs etc.
 	 */
+
+	"git": {
+		"inline_blame": {
+			"enabled": true,
+			"show_commit_summary": true,
+		},
+	},
 	"gutter": {
 		"breakpoints": true,
 		"min_line_number_digits": 0,
 	},
 	"scrollbar": {
-		"show": "never",
+		"show": "auto",
 	},
 	"toolbar": {
 		"agent_review": false,
@@ -118,13 +143,16 @@
 	 * Panels
 	 */
 	"collaboration_panel": {
-		"button": false,
+		"dock": "right",
+  "button": false,
 	},
 	"git_panel": {
-		"button": true,
+		"dock": "right",
+  "button": true,
 	},
 	"outline_panel": {
-		"button": false,
+		"dock": "right",
+  "button": false,
 	},
 
 	"project_panel": {
@@ -147,28 +175,94 @@
 	 * Terminal
 	 */
 	"terminal": {
-		"minimum_contrast": 60.0,
+		"minimum_contrast": 50.0,
 		"toolbar": {
 			"breadcrumbs": false,
 		},
 		"font_weight": 400.0,
-		"font_size": 13.0,
+		"font_size": 14.0,
 	},
 
 	/*
 	 * Theming & Keymaps
 	 */
 	"base_keymap": "VSCode",
-	"icon_theme": "Material Icon Theme",
+	"icon_theme": {
+  "mode": "light",
+  "light": "Material Icon Theme",
+  "dark": "Colored Zed Icons Theme Dark"
+ },
 	"theme": {
-		"mode": "dark",
-		"light": "Gruvbox Light",
-		"dark": "Catppuccin Mocha - No Italics",
+  "mode": "system",
+  "light": "One Light",
+  "dark": "Catppuccin Mocha - No Italics"
+ },
+
+	"experimental.theme_overrides": {
+		"border.variant": "#90A4AE66",
+
+		// 	"syntax": {
+		// 		"string": {
+		// 			"color": "#C9C25FFF",
+		// 		},
+		// 		"function": {
+		// 			"color": "#A7B4C2FF",
+		// 		},
+		// 		"property": {
+		// 			"color": "#E3C0A1FF",
+		// 		},
+		// 		"variable": {
+		// 			"color": "#E8D5ACFF",
+		// 		},
+		// 		"tag": {
+		// 			"color": "#F5A39FFF",
+		// 		},
+		// 	},
 	},
 
 	/*
 	 * Others
 	 */
+
+	"languages": {
+		"JavaScript": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+			},
+		},
+		"TypeScript": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+			},
+		},
+		"JSONC": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+			},
+		},
+		"JSON": {
+			"formatter": { "language_server": { "name": "biome" } },
+			"code_actions_on_format": {
+				"source.fixAll.biome": true,
+				"source.organizeImports.biome": true,
+			},
+		},
+	},
+
+	"lsp": {
+		"biome": {
+			"settings": {
+				"config_path": "<path>/biome.json",
+				"require_config_file": true,
+				},
+			},
+	},
 	"session": {
 		"trust_all_worktrees": true,
 	},

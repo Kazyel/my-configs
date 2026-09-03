@@ -1,0 +1,3 @@
+theme = "gruvbox"
+default_scope = "branch"
+navigator_position = "right"

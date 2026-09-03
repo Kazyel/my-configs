@@ -1,0 +1,88 @@
+setupVersion: 2
+composer:
+  shape: claude
+statusLine:
+  preset: custom
+  separator: block
+  transparent: true
+  compactThinkingLevel: false
+  leftSegments:
+    - model
+    - mode
+    - git
+    - pr
+    - context_pct
+  rightSegments:
+    - session_name
+  segmentOptions:
+    model:
+      showThinkingLevel: false
+    git:
+      showBranch: true
+      showStaged: true
+      showUnstaged: true
+      showUntracked: false
+    usage:
+      display: weekly-remaining
+  contextLine: annotated
+  sessionAccent: false
+  showHookStatus: true
+symbolPreset: nerd
+theme:
+  dark: dark-gruvbox
+  light: light
+tui:
+  textSizing: true
+  codexResetFireworks: true
+  tight: false
+  hyperlinks: auto
+terminal:
+  showProgress: true
+showHardwareCursor: true
+task:
+  showResolvedModelBadge: true
+  maxConcurrency: 5
+  isolation:
+    mode: auto
+  prewalk: false
+startup:
+  quiet: false
+  showSplash: true
+github:
+  enabled: true
+vault:
+  enabled: true
+modelRoles:
+  smol: openai-codex/gpt-5.6-luna:low
+  plan: openai-codex/gpt-5.6-sol:xhigh
+  vision: openai-codex/gpt-5.6-sol:high
+  commit: openai-codex/gpt-5.6-luna:low
+  tiny: openai-codex/gpt-5.6-luna:low
+  slow: openai-codex/gpt-5.6-sol:xhigh
+  advisor: openai-codex/gpt-5.6-sol:medium
+  default: openai-codex/gpt-5.6-sol:medium
+display:
+  hideToolActivity: false
+  shimmer: classic
+  smoothStreaming: true
+  collapseCompacted: true
+tools:
+  intentTracing: false
+treeFilterMode: all
+error:
+  notify: "off"
+generate_image:
+  enabled: true
+completion:
+  notify: "off"
+colorBlindMode: false
+dev:
+  autoqaConsent: granted
+hideThinkingBlock: false
+disabledExtensions:
+  - skill:orca-cli
+defaultThinkingLevel: medium
+disabledProviders:
+  - ollama
+  - llama.cpp
+  - lm-studio

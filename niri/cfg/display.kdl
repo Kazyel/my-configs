@@ -8,7 +8,7 @@ output "eDP-1" {
 	scale 1 // No scaling (use 2 for HiDPI)
 }
 
-output "HDMI-A-1" {
-	mode "2560x1080@74.979"
+output "LG Electronics LG ULTRAWIDE 0x00027393" {
+	mode "2560x1080@74.991"
 	scale 1
 }

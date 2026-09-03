@@ -49,10 +49,13 @@ export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# Reuse the systemd-managed SSH agent across terminals and applications.
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-/run/user/$UID}/ssh-agent.socket"
 
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)"
+# Load the GitHub key once per login. The first interactive shell may ask for
+# its passphrase; subsequent shells reuse the key from the shared agent.
+if [[ -o interactive ]] && ! ssh-add -L 2> /dev/null | grep -Fq "$(cut -d " " -f2 "$HOME/.ssh/id_ed25519.pub")"; then
+    ssh-add "$HOME/.ssh/id_ed25519"
 fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -68,6 +71,7 @@ alias cleanch="sudo pacman -Scc"
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
 alias update="sudo pacman -Syu"
 alias gearlever='flatpak run it.mijorus.gearlever'
+alias reviewr='herdr plugin action invoke open --plugin persiyanov.reviewr'
 
 # Help people new to Arch
 alias apt="man pacman"
@@ -111,29 +115,34 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | head -200'"
 
-# fzf preview for tmux
-export FZF_TMUX_OPTS=" -p90%,70% "
-
 # EZA
 alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
 
-export PATH=$PATH:/home/mateusmascarelo/.spicetify
+# Starship
+export STARSHIP_CONFIG=$HOME/.config/starship.toml
+
+# Fastfetch
+fastfetch --logo-type file --logo "$HOME/.config/fastfetch/ascii.txt"
+eval "$(starship init zsh)"
+
+export PATH=$PATH:$HOME/.spicetify
 export PATH="$HOME/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PNPM_HOME="/home/mateusmascarelo/.local/share/pnpm"
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+# pnpm end
 
-# Starship
-export STARSHIP_CONFIG=$HOME/.config/starship.toml
-eval "$(starship init zsh)"
+. "$HOME/.atuin/bin/env"
 
-# Fastfetch
-# Put custom logo here
-# fastfetch --logo-type file --logo /home/kazyel/.config/fastfetch/ascii.txt
+eval "$(atuin init zsh)"
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
